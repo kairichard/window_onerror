@@ -1,4 +1,4 @@
-function create_synatx_error(){
+function force_syntax_error_in_document(){
     var synatx_error = document.createElement('script');
     synatx_error.text = "(function() var a = []; b[1]})()"
     document.body.appendChild(synatx_error)
@@ -19,12 +19,13 @@ function get_parsed_url_of_report_image(){
       expect(error_images.length).toBe(1)
       return purl(error_image.src)
 }
+
 describe('Calling thourgh the original window.onerror', function(){
   beforeEach(function(){
       spy = jasmine.createSpy('old error handler')
       window.onerror = spy
       ErrorHandler.setup()
-      create_synatx_error()
+      force_syntax_error_in_document()
   })
 
   afterEach(function(){
@@ -40,7 +41,7 @@ describe('Configurablitiy', function() {
   beforeEach(function(){
       ErrorHandler.set_reporting_endpoint("http://error.io/error")
       ErrorHandler.setup()
-      create_synatx_error()
+      force_syntax_error_in_document()
   })
 
   it('should be configurable to report to any endpoint', function() {
@@ -53,7 +54,7 @@ describe('Configurablitiy', function() {
 describe('Reporting on syntax error', function() {
   beforeEach(function(){
       ErrorHandler.setup()
-      create_synatx_error()
+      force_syntax_error_in_document()
   })
 
   afterEach(function(){

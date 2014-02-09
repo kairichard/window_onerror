@@ -1,10 +1,19 @@
 {
   "devDependencies": {
     "karma": "~0.10",
-    "karma-html2js-preprocessor": "~0.1"
+    "karma-html2js-preprocessor": "~0.1",
+    "gulp": "~3.5.2",
+    "gulp-autoprefixer": "0.0.6",
+    "gulp-jshint": "~1.4.0",
+    "gulp-concat": "~2.1.7",
+    "gulp-uglify": "~0.2.1",
+    "gulp-clean": "~0.2.4",
+    "gulp-util": "~2.2.14",
+    "gulp-rename": "~1.0.0",
+    "gulp-notify": "~0.4.1"
   },
   "scripts": {
     "test": "./node_modules/.bin/karma start karma.conf.js --single-run --browsers PhantomJS"
+    "build": "./node_modules/.bin/gulb build"
   }
 }
-
