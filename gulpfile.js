@@ -20,3 +20,17 @@ gulp.task('build', function() {
     .pipe(notify({ message: 'Scripts task complete' }));
 });
 
+gulp.task('lint', function() {
+  return gulp.src('src/**/*.js')
+    .pipe(jshint('.jshintrc'))
+    .pipe(jshint.reporter('default'))
+    .pipe(notify({ message: 'Scripts task complete' }));
+});
+
+gulp.task('lint-tests', function() {
+  return gulp.src('tests/*.js')
+    .pipe(jshint('.jshintrc'))
+    .pipe(jshint.reporter('default'))
+    .pipe(notify({ message: 'Scripts task complete' }));
+});
+
